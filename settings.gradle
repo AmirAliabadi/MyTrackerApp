@@ -1,0 +1,3 @@
+include ':app'
+rootProject.name='MyTrackerApp'
+enableFeaturePreview('IMPROVED_POM_SUPPORT')
