@@ -157,6 +157,18 @@ public class MyLocationService extends Service implements LocationListener
         restAPIEndPoint = extras.get("restAPIEndPoint").toString();
         userId = extras.get("userId").toString();
         sessionId = extras.get("sessionId").toString();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        String json = String.format("{\"user\":\"%s\", \"session\":\"%s\", \"dt\":\"%s\", \"lat\":%.8f, \"lng\":%.8f}",
+                userId,
+                "user",
+                formatter.format(date),
+                0.0,
+                0.0 );
+
+        locationDataStack.add(json);
+
         return START_NOT_STICKY ;
     }
 
