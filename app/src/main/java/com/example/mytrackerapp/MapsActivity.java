@@ -31,7 +31,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-    private String restAPIEndPoint = "https://lrab2cq8fc.execute-api.us-west-2.amazonaws.com/dev/mylocationdata";
+    private String restAPIEndPoint = null;
     private boolean isVisible = false;
     private GoogleMap mMap;
     private static Context context;
@@ -48,10 +48,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             double lat = (double)intent.getExtras().get("Latitude");
             double lng = (double)intent.getExtras().get("Longitude");
             Location loc = (Location)intent.getExtras().get("Location");
-
-            // CharSequence text = String.format("%f",loc.getAccuracy());
-            // Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
-            // toast.show();
 
             LatLng latlng = new LatLng(lat, lng);
             if( lastlatlng != null) {
@@ -90,6 +86,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        this.restAPIEndPoint = getString(R.string.restAPIEndPoint);
 
         MapsActivity.context = getApplicationContext();
 
